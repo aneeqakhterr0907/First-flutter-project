@@ -1,0 +1,51 @@
+class BankAccount {
+  int accountNumber;
+  double balance;
+  String accountType;
+  double interestRate;
+
+  BankAccount(this.accountNumber, this.balance, this.accountType, this.interestRate);
+
+  void deposit(double amount) {
+    balance += amount;
+    print("Deposited $amount. New balance: $balance");
+  }
+
+  void withdraw(double amount) {
+    if (amount <= balance) {
+      balance -= amount;
+      print("Withdrew $amount. New balance: $balance");
+    } else {
+      print("Insufficient funds. Withdrawal canceled.");
+    }
+  }
+
+  void addInterest() {
+    double interest = balance * (interestRate / 100);
+    balance =balance+ interest;
+    print("Interest added. New balance: $balance");
+  }
+
+  void display() {
+    print("Account Number: $accountNumber");
+    print("Balance: $balance");
+    print("Account Type: $accountType");
+    print("Interest Rate: $interestRate%\n");
+  }
+}
+
+void main() {
+  
+  var account1 = BankAccount(12121, 50000, "Savings", 3.5);
+  var account2 = BankAccount(23232, 80000, "Checking", 2.0);
+
+  account1.deposit(10000);
+  account1.withdraw(2000);
+  account1.addInterest();
+  account1.display();
+
+  account2.deposit(15000);
+  account2.withdraw(10000);
+  account2.addInterest();
+  account2.display();
+}
